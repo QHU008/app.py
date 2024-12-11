@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template, request
+import textblob
 
 app = Flask(__name__)
 
@@ -9,6 +10,12 @@ def index():
 
 @app.route("/SA",methods=["GET","POST"])
 def SA():
+    return(render_template("SA.html"))
+
+@app.route("/SA",methods=["GET","POST"])
+def SA_result():
+    q = request.form.get("q")
+    r = textblob.TextBlob(q).sentiment
     return(render_template("SA.html"))
 
 if __name__=="__main__":
