@@ -12,11 +12,11 @@ def index():
 def SA():
     return(render_template("SA.html"))
 
-@app.route("/SA",methods=["GET","POST"])
+@app.route("/SA_result",methods=["GET","POST"])
 def SA_result():
     q = request.form.get("q")
     r = textblob.TextBlob(q).sentiment
-    return(render_template("SA.html"))
+    return(render_template("SA_result.html",r=r))
 
 if __name__=="__main__":
     app.run()
